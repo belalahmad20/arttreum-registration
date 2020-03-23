@@ -303,19 +303,6 @@ input[type="radio"]:checked + label:after {
         font-size: 17px;
       }
     }
-    .bottomContent {
-      position: absolute;
-      width: 100%;
-      padding: 0 50px;
-      bottom: 2%;
-      z-index: 2;
-      height: auto;
-      .socialIconsWrap {
-        a + a {
-          margin-left: 10px;
-        }
-      }
-    }
     .artistsTypeWrap {
       .artistTypeItem {
         height: 100vh;
@@ -354,10 +341,63 @@ input[type="radio"]:checked + label:after {
       }
     }
   }
+  .bottomContent {
+    position: fixed;
+    width: 100%;
+    padding: 0 50px;
+    bottom: 2%;
+    z-index: 2;
+    height: auto;
+    color: color(font-white);
+    @include media-breakpoint-down(md) {
+      position: relative;
+      color: color(font-dark);
+      padding: 0 30px 15px;
+    }
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    p {
+      @include media-breakpoint-down(md) {
+        opacity: 0.8;
+      }
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+        flex-basis: 100%;
+        font-size: 15px;
+      }
+    }
+    .socialIconsWrap {
+      a + a {
+        margin-left: 10px;
+      }
+      a {
+        img {
+          @include media-breakpoint-down(md) {
+            filter: grayscale(100%) invert(1);
+            opacity: 0.7;
+          }
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+        margin: 10px 0 0;
+        justify-content: center;
+        flex-basis: 100%;
+      }
+    }
+  }
   .plainBackground {
     background: color(font-white);
     padding: 40px 70px;
     margin-left: auto;
+    @include media-breakpoint-down(md) {
+      padding: 40px 30px;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 40px 20px;
+    }
     h2 {
       width: max-content;
       font-size: 40px;
@@ -391,8 +431,12 @@ input[type="radio"]:checked + label:after {
     .thankYouBlock {
       box-shadow: 0 10px 30px 20px rgba(141, 151, 158, 0.2);
       padding: 20px 25px;
+      border-radius: 10px;
+      @include media-breakpoint-down(sm) {
+        padding: 25px 15px;
+      }
       h1 {
-        font-size: 45px;
+        font-size: 40px;
       }
       a {
         background: color(font-dark);
