@@ -1,2 +1,2 @@
-# arttreum-registration
+# Arttreum Registration
 Pre Launch lead generation page.
