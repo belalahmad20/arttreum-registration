@@ -1,0 +1,346 @@
+@import "_breakpoints", "_functions", "_variables";
+//++++Color Variables++++//
+$colors: (
+  font-white: #fff,
+  bgcolor: #f9f9f9,
+  primary: #007fff,
+  font-dark: #1b1b1b,
+  red-delete: #ea425c,
+  success-green: #3ecf8e
+);
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+//++++Variable Breakpoints++++//
+@mixin breakpoint($point) {
+  @if $point=xlr {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+}
+//++++Fonts++++//
+$heaingFont: "Work Sans", sans-serif;
+//++++Keyframes++++//
+@keyframes colorchange {
+  0% {
+    background: #667eea;
+  }
+  30% {
+    background: #764ba2;
+  }
+  60% {
+    background: #00cdac;
+  }
+  100% {
+    background: #3cba92;
+  }
+}
+@-webkit-keyframes colorchange {
+  0% {
+    background: #667eea;
+  }
+  30% {
+    background: #764ba2;
+  }
+  60% {
+    background: #00cdac;
+  }
+  100% {
+    background: #3cba92;
+  }
+}
+@keyframes shape {
+  0% {
+    opacity: 0.5;
+    transform: scale(0) rotate(0) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+  }
+}
+@-webkit-keyframes shape {
+  0% {
+    opacity: 0.5;
+    transform: scale(0) rotate(0) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+  }
+}
+//++++General CSS++++//
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: $heaingFont;
+  margin: 0;
+  color: color(font-dark);
+  font-size: 16px;
+}
+p {
+  letter-spacing: 0.25px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+input,
+select,
+textarea {
+  background: #f7f7f7;
+  border: none;
+  padding: 12px 15px;
+  margin: 0 0 15px;
+  width: 100%;
+  font-weight: 300;
+  &:focus {
+    border: 0;
+    outline: none;
+  }
+}
+textarea {
+  resize: none;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  position: relative;
+  display: none;
+}
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  & + label {
+    display: flex;
+    align-items: center;
+    &:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      background: color(bgcolor);
+      border: 1px solid darken(color(bgcolor), 25%);
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-radius: 4px;
+    }
+    .tick {
+      position: absolute;
+      stroke: color(font-white);
+      stroke-width: 2px;
+      stroke-dasharray: 17px;
+      stroke-dashoffset: 17px;
+      transition: 0.2s 0.1s ease;
+      cursor: pointer;
+    }
+  }
+  &:checked {
+    & + label {
+      &::before {
+        background: #56ccf2;
+        background: linear-gradient(-60deg, #2f80ed, #56ccf2);
+      }
+      .tick {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+  &:focus {
+    & + label {
+      &:before {
+        border-color: none;
+        outline: none;
+      }
+    }
+  }
+}
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: color(font-dark);
+  font-weight: 300;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid darken(color(bgcolor), 15%);
+  border-radius: 100%;
+  background: color(font-white);
+}
+input[type="radio"]:checked + label:after,
+input[type="radio"]:not(:checked) + label:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #56ccf2;
+  background: linear-gradient(-60deg, #2f80ed, #56ccf2);
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+input[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+input[type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+//++++slick dots++++//
+.slick-dots {
+  bottom: 22px;
+  li {
+    margin: 0;
+    width: 8px;
+    height: 8px;
+    button {
+      padding: 0;
+      &:before {
+        content: " ";
+        background: color(font-white);
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+      }
+    }
+    &.slick-active {
+      width: 22px;
+      position: relative;
+      top: 2px;
+      button {
+        &:before {
+          width: 22px;
+          height: 4px;
+          border-radius: 38px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  li + li {
+    margin-left: 10px;
+  }
+}
+//++++section++++//
+.mainWrapper {
+  // height: 100vh;
+  .backgroundImages {
+    position: fixed;
+    left: 0;
+    top: 0;
+    .content {
+      position: absolute;
+      width: 100%;
+      color: color(font-white);
+      padding: 40px 50px;
+      top: 0;
+      z-index: 2;
+      height: auto;
+      h1 {
+        margin-bottom: 5px;
+        font-size: 34px;
+      }
+      h2 {
+        margin-bottom: 15px;
+        font-size: 34px;
+      }
+      p {
+        font-size: 17px;
+      }
+    }
+    .artistsTypeWrap {
+      .artistTypeItem {
+        height: 100vh;
+        margin-bottom: -7px;
+        &:before {
+          content: "";
+          position: absolute;
+          background: #0000003d;
+          background: -webkit-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(0, 0, 0, 0.4) 100%
+          );
+          background: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(0, 0, 0, 0.4) 100%
+          );
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+        }
+        img {
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+          height: 100vh;
+        }
+      }
+    }
+  }
+  .plainBackground {
+    background: color(font-white);
+    padding: 40px 50px;
+    margin-left: auto;
+    h2 {
+      width: max-content;
+      font-size: 40px;
+      position: relative;
+      letter-spacing: 1px;
+      margin: 0 0 12px;
+      padding: 0 0 18px;
+      &:before,
+      &:after {
+        content: "";
+        width: 35%;
+        position: absolute;
+        background: #a044ff;
+
+        bottom: 0;
+        height: 3.5px;
+        border-radius: 50px;
+        left: 0;
+      }
+      &:after {
+        width: 13%;
+        left: 38%;
+      }
+    }
+  }
+}

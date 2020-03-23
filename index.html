@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arttreum</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <section class="mainWrapper">
+      <div class="row no-gutters justify-content-between align-items-center">
+        <div class="col-12 col-lg-6 backgroundImages">
+          <div class="content">
+            <h1>Are you <span id="changingword"> an actor</span> ?</h1>
+            <h2>Get hired by your dream brand</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+              dolor numquam vero alias a eaque ab vel expedita quod u!
+            </p>
+          </div>
+          <div class="artistsTypeWrap mb-0">
+            <div class="artistTypeItem">
+              <img src="assets/images/actor.jpg" class="img-fluid" />
+            </div>
+            <div class="artistTypeItem">
+              <img src="assets/images/cameraman.jpg" class="img-fluid" />
+            </div>
+            <div class="artistTypeItem">
+              <img src="assets/images/singer_two.jpg" class="img-fluid" />
+            </div>
+            <div class="artistTypeItem">
+              <img src="assets/images/dancer.jpg" class="img-fluid" />
+            </div>
+            <div class="artistTypeItem">
+              <img src="assets/images/model.jpg" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 plainBackground">
+          <h2>Register Now</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+            sunt pariatur tempore
+          </p>
+          <!-- www.123formbuilder.com script begins here -->
+          <script
+            type="text/javascript"
+            defer
+            src="//www.123formbuilder.com/embed/5353196.js"
+            data-role="form"
+            data-default-width="650px"
+          ></script>
+          <!-- www.123formbuilder.com script ends here -->
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script>
+      $(".artistsTypeWrap").slick({
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        fade: true,
+        cssEase: "linear",
+        arrows: false,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000
+      });
+      (function() {
+        var words = [
+            "an actor",
+            "a photographer",
+            "a singer",
+            "a dancer",
+            "a model"
+          ],
+          i = 0;
+        setInterval(function() {
+          $("#changingword").fadeOut(function() {
+            $(this)
+              .html(words[(i = (i + 1) % words.length)])
+              .fadeIn();
+          });
+        }, 4900);
+      })();
+    </script>
+  </body>
+</html>
