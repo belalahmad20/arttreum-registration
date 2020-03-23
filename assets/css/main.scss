@@ -20,7 +20,25 @@ $colors: (
   }
 }
 //++++Fonts++++//
-$heaingFont: "Work Sans", sans-serif;
+@font-face {
+  font-family: "Circular Std";
+  src: local("Circular Std Medium"), local("../fonts"),
+    url("../fonts/CircularStd-Medium.woff2") format("woff2"),
+    url("../fonts/CircularStd-Medium.woff") format("woff"),
+    url("../fonts/CircularStd-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular Std";
+  src: local("Circular Std Book"), local("../fonts"),
+    url("../fonts/CircularStd-Book.woff2") format("woff2"),
+    url("../fonts/CircularStd-Book.woff") format("woff"),
+    url("../fonts/CircularStd-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+$heaingFont: "Circular Std", sans-serif;
 //++++Keyframes++++//
 @keyframes colorchange {
   0% {
@@ -76,6 +94,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: $heaingFont;
+  font-weight: normal;
   margin: 0;
   color: color(font-dark);
   font-size: 16px;
@@ -89,6 +108,8 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: $heaingFont;
+  font-weight: 500;
 }
 a {
   &:hover,
@@ -359,6 +380,32 @@ input[type="radio"]:checked + label:after {
       &:after {
         width: 13%;
         left: 38%;
+      }
+    }
+  }
+}
+//++++thankyou++++//
+.thankYouWrap {
+  .thankYouRow {
+    height: 100vh;
+    .thankYouBlock {
+      box-shadow: 0 10px 30px 20px rgba(141, 151, 158, 0.2);
+      padding: 20px 25px;
+      h1 {
+        font-size: 45px;
+      }
+      a {
+        background: color(font-dark);
+        color: color(font-white);
+        font-size: 16px;
+        width: max-content;
+        margin: 15px auto 0;
+        padding: 10px 25px 10px 20px;
+        border-radius: 4px;
+        img {
+          position: relative;
+          top: -1px;
+        }
       }
     }
   }
