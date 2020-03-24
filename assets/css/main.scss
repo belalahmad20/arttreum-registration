@@ -98,6 +98,9 @@ body {
   margin: 0;
   color: color(font-dark);
   font-size: 16px;
+  @include media-breakpoint-down(sm) {
+    font-size: 15px;
+  }
 }
 p {
   letter-spacing: 0.25px;
@@ -241,6 +244,50 @@ input[type="radio"]:checked + label:after {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+p {
+  line-height: 25px;
+}
+.gradientText {
+  background: #e1bc41;
+  background: linear-gradient(to right, #e1bc41 0%, #e0c668 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.whiteBtn {
+  background: color(font-white);
+  padding: 12px 22px;
+  font-size: 17px;
+  border-radius: 4px;
+  width: max-content;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.sectionWrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.gradientBtn {
+  background: #e1bc41;
+  background: linear-gradient(to right, #e1bc41 0%, #e0c668 100%);
+  color: color(font-white);
+  font-size: 16px;
+  width: max-content;
+  border-radius: 4px;
+  padding: 13px 22px;
+  box-shadow: 0 4px 22px 1px rgba(202, 202, 202, 0.29);
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  transition: all 0.4s ease-in;
+  &:focus {
+    color: color(font-white);
+  }
+  &:hover {
+    color: color(font-white);
+    box-shadow: 0 6px 24px 8px rgba(202, 202, 202, 0.31);
+    transition: all 0.4s ease-in;
+  }
+}
 //++++slick dots++++//
 .slick-dots {
   bottom: 22px;
@@ -276,25 +323,62 @@ input[type="radio"]:checked + label:after {
     margin-left: 10px;
   }
 }
-//++++section++++//
-p {
-  line-height: 25px;
+//++++header++++//
+.siteHeader {
+  padding: 20px 0;
+  .logoWrapper {
+    img {
+      width: 220px;
+      @include media-breakpoint-down(sm) {
+        width: 150px;
+      }
+    }
+  }
+  .gradientBtn {
+    @include media-breakpoint-down(sm) {
+      padding: 11px 16px;
+      font-size: 14px;
+    }
+  }
+  &.sticky {
+    width: 100%;
+    background: #ffffff1a;
+    position: fixed;
+    backdrop-filter: saturate(180%) blur(45px);
+    top: 0;
+    z-index: 99;
+    padding: 10px;
+    box-shadow: 0 6px 24px 8px rgba(202, 202, 202, 0.31);
+  }
 }
-.gradientText {
-  background: #e1bc41;
-  background: linear-gradient(to right, #e1bc41 0%, #e0c668 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+//++++footer++++//
+.absoluteFooter {
+  padding: 10px 0;
+  p {
+    font-size: 15px;
+    opacity: 0.8;
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+  }
+  .socialIconsWrap {
+    justify-content: flex-end;
+    .iconWrap + .iconWrap {
+      margin-left: 8px;
+    }
+    @include media-breakpoint-down(sm) {
+      justify-content: center;
+      margin-top: 5px;
+    }
+    .iconWrap {
+      img {
+        filter: grayscale(100%) invert(1);
+        opacity: 0.7;
+      }
+    }
+  }
 }
-.whiteBtn {
-  background: color(font-white);
-  padding: 12px 22px;
-  font-size: 17px;
-  border-radius: 4px;
-  width: max-content;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
+//++++index++++//
 .mainWrapper {
   .backgroundImages {
     position: fixed;
@@ -448,6 +532,11 @@ p {
     }
   }
 }
+.whatsapp-link {
+  z-index: 10;
+  right: 2%;
+  bottom: 4%;
+}
 //++++thankyou++++//
 .thankYouWrap {
   .thankYouRow {
@@ -468,14 +557,8 @@ p {
         font-size: 40px;
       }
       .btnGradient {
-        background: #e1bc41;
-        background: linear-gradient(to right, #e1bc41 0%, #e0c668 100%);
-        color: color(font-white);
-        font-size: 16px;
-        width: max-content;
         margin: 15px auto 0;
         padding: 10px 25px 10px 20px;
-        border-radius: 4px;
         img {
           position: relative;
           top: -1px;
@@ -484,8 +567,47 @@ p {
     }
   }
 }
-.whatsapp-link {
-  z-index: 10;
-  right: 2%;
-  bottom: 2%;
+//++++about++++//
+.aboutWrapper {
+  .aboutContent {
+    padding: 0 40px;
+    @include media-breakpoint-down(md) {
+      padding: 45px 40px;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 35px 20px;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      background: url("../images/dots.png");
+      width: 60%;
+      height: 60%;
+      top: -25%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: 4%;
+      opacity: 0.4;
+      z-index: -3;
+      @include media-breakpoint-down(md) {
+        width: 17%;
+        height: 40%;
+        top: 0%;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 25%;
+        height: 19%;
+        top: 4%;
+      }
+    }
+  }
+  img {
+    height: calc(100vh - 139.5px);
+    @include media-breakpoint-down(md) {
+      height: 375px;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
 }
