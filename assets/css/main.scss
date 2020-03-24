@@ -277,6 +277,9 @@ input[type="radio"]:checked + label:after {
   }
 }
 //++++section++++//
+p {
+  line-height: 25px;
+}
 .gradientText {
   background: #e1bc41;
   background: linear-gradient(to right, #e1bc41 0%, #e0c668 100%);
@@ -455,6 +458,11 @@ input[type="radio"]:checked + label:after {
       border-radius: 10px;
       @include media-breakpoint-down(sm) {
         padding: 25px 15px;
+      }
+      .logo {
+        img {
+          left: -8px;
+        }
       }
       h1 {
         font-size: 40px;
